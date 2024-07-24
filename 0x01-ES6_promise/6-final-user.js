@@ -3,12 +3,14 @@ import uploadPhoto from './5-photo-reject';
 
 export default function handleProfileSignup(firstName, lastName, fileName) {
   const lst = [{}, {}];
-  return signUpUser(firstName, lastName).then((response) => {
-    lst[0].status = signUpUser;
+  const promise1 = signUpUser(firstName, lastName);
+  const promise2 = uploadPhoto(fileName);
+  return promise1.then((response) => {
+    lst[0].status = promise1;
     lst[0].value = response;
-    return uploadPhoto(fileName);
+    return promise2;
   }).catch((error) => {
-    lst[1].status = uploadPhoto;
+    lst[1].status = promise2;
     lst[1].value = error;
   }).then(() => lst);
 }
