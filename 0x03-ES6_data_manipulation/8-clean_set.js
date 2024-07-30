@@ -1,7 +1,7 @@
 export default function cleanSet(set, startString) {
-  if (startString === '') {
+  /* if (startString === '') {
     return '';
-  }
+  } */
   let str = '';
   const cut = startString.length;
   for (const element of set) {
