@@ -33,17 +33,10 @@ function countStudents(path) {
     }
     console.log(`Number of students: ${numberOfStudents}`);
     for (const key of keyList) {
-      process.stdout.write(`Number of students in ${key}: ${dataDict[key][0]}. List: `);
-      for (const name of dataDict[key][1]) {
-        if (name !== dataDict[key][1][dataDict[key][1].length - 1]) {
-          process.stdout.write(`${name}, `);
-        } else {
-          process.stdout.write(`${name}\n`);
-        }
+      console.log(`Number of students in ${key}: ${dataDict[key][0]}. List: ${dataDict[key][1].join(', ')}`);
       }
       /* eslint-enable prefer-destructuring */
       /* eslint-enable guard-for-in */
-    }
   } catch (err) {
     throw new Error('Cannot load the database');
   }
