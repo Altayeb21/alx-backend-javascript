@@ -40,7 +40,7 @@ function countStudents(path) {
       /* eslint-enable guard-for-in */
     }
   } catch (err) {
-    console.log('Cannot load the database');
+    throw new Error('Cannot load the database');
   }
 }
 
