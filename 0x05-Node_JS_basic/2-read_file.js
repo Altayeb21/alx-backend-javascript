@@ -5,6 +5,7 @@ function countStudents(path) {
     const data = fs.readFileSync(path, 'utf8');
     let numberOfStudents = 0;
     const dataDict = {};
+    const keyList = [];
     const dataArray = data.split('\n').slice(1);
     for (const chunk of dataArray) {
       const student = chunk.split(',');
@@ -20,6 +21,7 @@ function countStudents(path) {
         dataDict[student[3]][1][dataDict[student[3]][0]] = student[0];
         dataDict[student[3]][0] += 1;
       } else {
+        keyList[keyList.length] = student[3];
         dataDict[student[3]] = [];
         dataDict[student[3]][0] = 1;
         dataDict[student[3]][1] = [];
@@ -27,7 +29,7 @@ function countStudents(path) {
       }
     }
     console.log(`Number of students: ${numberOfStudents}`);
-    for (const key in dataDict) {
+    for (const key of keyList) {
       process.stdout.write(`Number of students in ${key}: ${dataDict[key][0]}. List: `);
       for (const name of dataDict[key][1]) {
         if (name !== dataDict[key][1][dataDict[key][1].length - 1]) {
