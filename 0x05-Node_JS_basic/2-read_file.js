@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function countStudents(path) {
+function countStudents (path) {
   try {
     const data = fs.readFileSync(path, 'utf8');
     let numberOfStudents = 0;
@@ -34,9 +34,9 @@ function countStudents(path) {
     console.log(`Number of students: ${numberOfStudents}`);
     for (const key of keyList) {
       console.log(`Number of students in ${key}: ${dataDict[key][0]}. List: ${dataDict[key][1].join(', ')}`);
-      }
-      /* eslint-enable prefer-destructuring */
-      /* eslint-enable guard-for-in */
+    }
+    /* eslint-enable prefer-destructuring */
+    /* eslint-enable guard-for-in */
   } catch (err) {
     throw new Error('Cannot load the database');
   }
