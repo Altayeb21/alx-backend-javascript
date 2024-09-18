@@ -6,7 +6,10 @@ function countStudents(path) {
     let numberOfStudents = 0;
     const dataDict = {};
     const keyList = [];
-    const dataArray = data.split('\n').slice(1);
+    let dataArray = data.split('\n');
+    if (dataArray.length > 1) {
+      dataArray = dataArray.slice(1);
+    }
     for (const chunk of dataArray) {
       const student = chunk.split(',');
       if (student.length < 4) {
