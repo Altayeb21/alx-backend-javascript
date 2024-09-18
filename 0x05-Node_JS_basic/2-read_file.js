@@ -1,8 +1,6 @@
 const fs = require('fs');
 
-/* eslint-disable prefer-destructuring */
-/* eslint-disable guard-for-in */
-function countStudents (path) {
+function countStudents(path) {
   try {
     const data = fs.readFileSync(path, 'utf8');
     let numberOfStudents = 0;
@@ -15,6 +13,8 @@ function countStudents (path) {
         continue;
         /* eslint-enable no-continue */
       }
+      /* eslint-disable prefer-destructuring */
+      /* eslint-disable guard-for-in */
       numberOfStudents += 1;
       if (student[3] in dataDict) {
         dataDict[student[3]][1][dataDict[student[3]][0]] = student[0];
@@ -36,12 +36,12 @@ function countStudents (path) {
           process.stdout.write(`${name}\n`);
         }
       }
+      /* eslint-enable prefer-destructuring */
+      /* eslint-enable guard-for-in */
     }
   } catch (err) {
     console.log('Cannot load the database');
   }
 }
-/* eslint-enable prefer-destructuring */
-/* eslint-enable guard-for-in */
 
 module.exports = countStudents;
